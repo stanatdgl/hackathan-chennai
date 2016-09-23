@@ -5,8 +5,8 @@ import { Field, reduxForm } from 'redux-form';
 const Step0Form = (props) => {
 
   const { handleSubmit, pristine, nextStep,previousStep, moveNextStep,  reset, submitting } = props
-  // let url = "/sample.json";
   let url = "/sample.json";
+  // let url = "http://192.168.1.101:8085/HackProj/rest/customers/high";
   const moveNext = () =>{
     console.log("inside check");
     axios.get(url).then(function(response){

@@ -1,5 +1,6 @@
 import React from 'react';
 import Step0Form from './Step0Form';
+import StepConfForm from './StepConfForm';
 import Step1Form from './Step1Form';
 import Step2Form from './Step2Form';
 import Step3Form from './Step3Form';
@@ -24,7 +25,9 @@ export default class AppContainer  extends React.Component {
 
 		switch (nextStep) {	
 			case '0': 
-				return <Step0Form moveNextStep={this.moveNextStep} nextStep='2'/>	
+				return <Step0Form moveNextStep={this.moveNextStep} nextStep='C'/>	
+			case 'C': 
+				return <StepConfForm moveNextStep={this.moveNextStep} nextStep='2'/>	
 			case '1': 
 				return <Step1Form moveNextStep={this.moveNextStep} nextStep='5'/>
 			case '2':
@@ -45,7 +48,7 @@ export default class AppContainer  extends React.Component {
 		console.log(child)
 
 		return (
-				<div id='childElement' style={ {width: "470px", padding:'14px', 'margin-top':'-38px', 'margin-left':'258px', 'position':'relative', border: "2px solid"} }>
+				<div id='childElement' style={ { width: "470px", padding:'14px', 'margin-top':'-38px', 'margin-left':'258px', 'position':'relative', border: "2px solid"} }>
 					{child}
 				</div>
 			);
