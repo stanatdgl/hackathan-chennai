@@ -1,0 +1,31 @@
+{
+  "firstname": "Helen",
+  "lastname": "Luce",
+  "dob": "21.08.1990",
+  "gender": "Female",
+  "postcode": "BAC SDS2",
+  "nationality": "UK",
+  "custype": "high",
+  "qual": "graduate",
+  "profession": "Private",
+  "secgrade": "sec2",
+  "incrange": "medium",
+  "marital_status": "Married"
+}
+
+
+{
+  "custname": "Roop",
+  "addrline1": "14 Tottenham Court Road",
+  "addrline2": "London",
+  "addrline3": "England",
+  "postcode": "W1T 1JY"
+}
+
+
+{
+  "custname": null,
+  "accno": null,
+  "custid": null,
+  "sortcode": null
+}

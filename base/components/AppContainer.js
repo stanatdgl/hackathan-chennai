@@ -1,4 +1,5 @@
 import React from 'react';
+import Step0Form from './Step0Form';
 import Step1Form from './Step1Form';
 import Step2Form from './Step2Form';
 import Step3Form from './Step3Form';
@@ -9,7 +10,7 @@ export default class AppContainer  extends React.Component {
 	
 	constructor(props){		
 		super(props);
-  		this.state = { currentStep: '1' };
+  		this.state = { currentStep: '0' };
 		this.moveNextStep = this.moveNextStep.bind(this);
 	}
 
@@ -22,6 +23,8 @@ export default class AppContainer  extends React.Component {
 		console.log('nextStep ::' + nextStep)
 
 		switch (nextStep) {	
+			case '0': 
+				return <Step0Form moveNextStep={this.moveNextStep} nextStep='2'/>	
 			case '1': 
 				return <Step1Form moveNextStep={this.moveNextStep} nextStep='5'/>
 			case '2':
