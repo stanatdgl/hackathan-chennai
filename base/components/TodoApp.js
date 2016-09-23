@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'redux';
 
-default class TodoApp extends React.Component {
+class TodoApp extends React.Component {
 
 	constructor(){
 		super();		
@@ -48,4 +48,4 @@ function mapDispatchToProps(dispatch){
       };
 }
 
-TodoApp  = connect (mapStateToProps, mapDispatchToProps) (TodoApp);
+export default TodoApp  = connect (mapStateToProps, mapDispatchToProps) (TodoApp);
