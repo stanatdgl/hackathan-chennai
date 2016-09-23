@@ -1,66 +1,54 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form';
+import Webcam from "react-user-media";
+import ReactCrop from 'react-image-crop';
 
-const Step3Form = (props) => {
-  const { handleSubmit, pristine, reset, submitting } = props
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>First Name</label>
-        <div>
-          <Field name="firstName" component="input" type="text" placeholder="First Name"/>
-        </div>
-      </div>
-      <div>
-        <label>Last Name</label>
-        <div>
-          <Field name="lastName" component="input" type="text" placeholder="Last Name"/>
-        </div>
-      </div>
-      <div>
-        <label>Email</label>
-        <div>
-          <Field name="email" component="input" type="email" placeholder="Email"/>
-        </div>
-      </div>
-      <div>
-        <label>Sex</label>
-        <div>
-          <label><Field name="sex" component="input" type="radio" value="male"/> Male</label>
-          <label><Field name="sex" component="input" type="radio" value="female"/> Female</label>
-        </div>
-      </div>
-      <div>
-        <label>Favorite Color</label>
-        <div>
-          <Field name="favoriteColor" component="select">
-            <option></option>
-            <option value="ff0000">Red</option>
-            <option value="00ff00">Green</option>
-            <option value="0000ff">Blue</option>
-          </Field>
-        </div>
-      </div>
-      <div>
-        <label htmlFor="employed">Employed</label>
-        <div>
-          <Field name="employed" id="employed" component="input" type="checkbox"/>
-        </div>
-      </div>
-      <div>
-        <label>Notes</label>
-        <div>
-          <Field name="notes" component="textarea"/>
-        </div>
-      </div>
-      <div>
-        <button type="submit" disabled={pristine || submitting}>Next</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
-      </div>
-    </form>
-  )
+
+
+export default class Step3Form extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {capturedImage: null}
+    this.capture = this.capture.bind(this);
+  }
+
+  moveNext (){
+    moveNextStep(nextStep);
+  }
+
+  capture(){
+    let screenShot = this.refs.webcam.captureScreenshot();
+    this.setState({capturedImage: screenShot });
+  }
+
+  render(){
+
+    const { handleSubmit, nextStep,previousStep, moveNextStep } = this.props
+
+    return (
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>IDCapure Page</label>        
+          </div>
+          <div>
+              <Webcam ref="webcam" />
+          </div>
+          <div>
+              <button type="button" onClick={this.capture} >Capture</button>
+          </div>
+
+          <div>
+          { 
+            this.state.capturedImage?
+              <ReactCrop ref='reactCropImg' src={this.state.capturedImage} /> : null        
+          }          
+          </div>
+            
+          <div>
+            <button type="button" onClick={this.moveNext} >Next</button>            
+          </div>
+        </form>
+    )
+  }   
 }
-
-export default reduxForm({
-  form: 'step3'  // a unique identifier for this form
-})(Step3Form)
