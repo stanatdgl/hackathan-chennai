@@ -1,72 +1,55 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form';
 
-const Step1Form = (props) => {
+export default class Step1Form extends React.Component {
 
-  const { handleSubmit, pristine, nextStep,previousStep, moveNextStep,  reset, submitting } = props
-
-  const moveNext = () =>{
-    moveNextStep(nextStep);
+  constructor(props){
+    super(props);
+    this.moveNext = this.moveNext.bind(this);
   }
 
-   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>First Name</label>
-        <div>
-          <Field name="firstName" component="input" type="text" placeholder="First Name"/>
-        </div>
-      </div>
-      <div>
-        <label>Last Name</label>
-        <div>
-          <Field name="lastName" component="input" type="text" placeholder="Last Name"/>
-        </div>
-      </div>
-      <div>
-        <label>Email</label>
-        <div>
-          <Field name="email" component="input" type="email" placeholder="Email"/>
-        </div>
-      </div>
-      <div>
-        <label>Sex</label>
-        <div>
-          <label><Field name="sex" component="input" type="radio" value="male"/> Male</label>
-          <label><Field name="sex" component="input" type="radio" value="female"/> Female</label>
-        </div>
-      </div>
-      <div>
-        <label>Favorite Color</label>
-        <div>
-          <Field name="favoriteColor" component="select">
-            <option></option>
-            <option value="ff0000">Red</option>
-            <option value="00ff00">Green</option>
-            <option value="0000ff">Blue</option>
-          </Field>
-        </div>
-      </div>
-      <div>
-        <label htmlFor="employed">Employed</label>
-        <div>
-          <Field name="employed" id="employed" component="input" type="checkbox"/>
-        </div>
-      </div>
-      <div>
-        <label>Notes</label>
-        <div>
-          <Field name="notes" component="textarea"/>
-        </div>
-      </div>
-      <div>
-        <button type="button" onClick={moveNext} >Next</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
-      </div>
-    </form>
-  )
-}
+  moveNext (){
+    this.props.moveNextStep(this.props.nextStep);
+  }
 
-export default reduxForm({
-  form: 'step1'  
-})(Step1Form)
+  render(){
+
+     const { handleSubmit, nextStep, moveNextStep } = this.props
+
+     return (
+      <form onSubmit={handleSubmit}>
+        <div>
+            <label>Is this you?</label>
+        </div>
+
+        <div>
+          <label>First Name</label>
+          <div>
+            <input name="firstName" component="input" type="text" placeholder="First Name"/>
+          </div>
+        </div>
+        <div>
+          <label>Last Name</label>
+          <div>
+            <input name="lastName" component="input" type="text" placeholder="Last Name"/>
+          </div>
+        </div>
+        <div>
+          <label>Email</label>
+          <div>
+            <input name="email" component="input" type="email" placeholder="Email"/>
+          </div>
+        </div>
+        <div>
+          <label>Sex</label>
+          <div>
+            <label><input name="sex" component="input" type="radio" value="male"/> Male</label>
+            <label><input name="sex" component="input" type="radio" value="female"/> Female</label>
+          </div>
+        </div>                
+        <div>
+          <button type="button" onClick={this.moveNext} >Next</button>
+        </div>
+      </form>
+    )
+   }
+}

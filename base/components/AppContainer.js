@@ -23,7 +23,7 @@ export default class AppContainer  extends React.Component {
 
 		switch (nextStep) {	
 			case '1': 
-				return <Step1Form moveNextStep={this.moveNextStep} nextStep='5'/>
+				return <Step1Form moveNextStep={this.moveNextStep} nextStep='2'/>
 			case '2':
 				return <Step2Form moveNextStep={this.moveNextStep} nextStep='3'/>
 			case '3':
@@ -42,7 +42,7 @@ export default class AppContainer  extends React.Component {
 		console.log(child)
 
 		return (
-				<div id='childElement' style={ {width: "470px", padding:'14px', 'margin-top':'-38px', 'margin-left':'258px', 'position':'relative', border: "2px solid"} }>
+				<div id='childElement' style={ {width: "470px", padding:'14px', 'marginTop':'-38px', 'marginLeft':'258px', 'position':'relative', border: "2px solid"} }>
 					{child}
 				</div>
 			);

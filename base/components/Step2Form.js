@@ -1,72 +1,52 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form';
+import Webcam from "react-user-media";
+import ReactCrop from 'react-image-crop';
 
-const Step2Form = (props) => {
+export default class Step2Form extends React.Component {
 
-  const { handleSubmit, pristine, nextStep,previousStep, moveNextStep,  reset, submitting } = props
-
-  const moveNext = () =>{
-    moveNextStep(nextStep);
+  constructor(props){
+    super(props);
+    this.state = {capturedImage: null}
+    this.capture = this.capture.bind(this);
+    this.moveNext = this.moveNext.bind(this);
   }
 
-   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>SecondPage Name</label>
-        <div>
-          <Field name="firstName" component="input" type="text" placeholder="First Name"/>
-        </div>
-      </div>
-      <div>
-        <label>Last Name</label>
-        <div>
-          <Field name="lastName" component="input" type="text" placeholder="Last Name"/>
-        </div>
-      </div>
-      <div>
-        <label>Email</label>
-        <div>
-          <Field name="email" component="input" type="email" placeholder="Email"/>
-        </div>
-      </div>
-      <div>
-        <label>Sex</label>
-        <div>
-          <label><Field name="sex" component="input" type="radio" value="male"/> Male</label>
-          <label><Field name="sex" component="input" type="radio" value="female"/> Female</label>
-        </div>
-      </div>
-      <div>
-        <label>Favorite Color</label>
-        <div>
-          <Field name="favoriteColor" component="select">
-            <option></option>
-            <option value="ff0000">Red</option>
-            <option value="00ff00">Green</option>
-            <option value="0000ff">Blue</option>
-          </Field>
-        </div>
-      </div>
-      <div>
-        <label htmlFor="employed">Employed</label>
-        <div>
-          <Field name="employed" id="employed" component="input" type="checkbox"/>
-        </div>
-      </div>
-      <div>
-        <label>Notes</label>
-        <div>
-          <Field name="notes" component="textarea"/>
-        </div>
-      </div>
-      <div>
-        <button type="button" onClick={moveNext} >Next</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
-      </div>
-    </form>
-  )
-}
+  moveNext (){
+    this.props.moveNextStep(this.props.nextStep);
+  }
 
-export default reduxForm({
-  form: 'step2'  
-})(Step2Form)
+  capture(){
+    let screenShot = this.refs.webcam.captureScreenshot();
+    this.setState({capturedImage: screenShot });
+  }
+
+  render(){
+
+    const { handleSubmit, nextStep, previousStep, moveNextStep } = this.props
+
+    return (
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Let's capture your ID</label>        
+          </div>
+          <div>
+              <Webcam ref="webcam" width='500' height='300' />
+          </div>
+          <div>
+              <button type="button" onClick={this.capture} >Capture</button>
+          </div>
+
+          <div>
+          { 
+            this.state.capturedImage?
+              <ReactCrop ref='reactCropImg' width='500' height='300' src={this.state.capturedImage} /> : null 
+          }          
+          </div>
+            
+          <div>
+            <button type="button" onClick={this.moveNext} >Next</button>            
+          </div>
+        </form>
+    )
+  }   
+}

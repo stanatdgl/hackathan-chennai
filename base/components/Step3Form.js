@@ -1,5 +1,4 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form';
 import Webcam from "react-user-media";
 import ReactCrop from 'react-image-crop';
 
@@ -11,10 +10,11 @@ export default class Step3Form extends React.Component {
     super(props);
     this.state = {capturedImage: null}
     this.capture = this.capture.bind(this);
+    this.moveNext = this.moveNext.bind(this);
   }
 
   moveNext (){
-    moveNextStep(nextStep);
+     this.props.moveNextStep(this.props.nextStep);
   }
 
   capture(){
@@ -24,15 +24,15 @@ export default class Step3Form extends React.Component {
 
   render(){
 
-    const { handleSubmit, nextStep,previousStep, moveNextStep } = this.props
+    const { handleSubmit, nextStep, moveNextStep } = this.props
 
     return (
         <form onSubmit={handleSubmit}>
           <div>
-            <label>IDCapure Page</label>        
+            <label>Let's take a selfie</label>        
           </div>
           <div>
-              <Webcam ref="webcam" />
+              <Webcam ref="webcam" width='500' height='300' />
           </div>
           <div>
               <button type="button" onClick={this.capture} >Capture</button>
@@ -41,12 +41,12 @@ export default class Step3Form extends React.Component {
           <div>
           { 
             this.state.capturedImage?
-              <ReactCrop ref='reactCropImg' src={this.state.capturedImage} /> : null        
+              <ReactCrop ref='reactCropImg' width='500' height='300' src={this.state.capturedImage} /> : null        
           }          
           </div>
             
           <div>
-            <button type="button" onClick={this.moveNext} >Next</button>            
+            <button type="button" onClick={this.moveNext} >Next</button>
           </div>
         </form>
     )
