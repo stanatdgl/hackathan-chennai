@@ -61,7 +61,7 @@ export default class Step1Form extends React.Component {
         <div style={ {paddingBottom:'14px'}}>
           <label>Sex</label>
           <div>
-            <label><input name="sex" type="radio" value="male"/> Male</label>
+            <label><input name="sex" checked type="radio" value="male"/> Male</label>
             <label><input name="sex" type="radio" value="female"/> Female</label>
           </div>
         </div>                

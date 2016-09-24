@@ -31,7 +31,7 @@ export default class AppContainer  extends React.Component {
 			case '0': 
 				return <Step0Form moveNextStep={this.moveNextStep} nextStep='C'/>	
 			case 'C': 
-				return <StepConfForm moveNextStep={this.moveNextStep} nextStep='2'/>	
+				return <StepConfForm moveNextStep={this.moveNextStep} nextStep='1'/>	
 			case '1': 
 				return <Step1Form moveNextStep={this.moveNextStep} customerData={this.state.customerData} nextStep='2'/>
 			case '2':
@@ -39,9 +39,9 @@ export default class AppContainer  extends React.Component {
 			case '3':
 				return <Step3Form moveNextStep={this.moveNextStep} customerData={this.state.customerData} nextStep='4'/>
 			case '4':
-				return <Step4Form moveNextStep={this.moveNextStep} nextStep='5'/>		
+				return <Step4Form moveNextStep={this.moveNextStep} customerData={this.state.customerData} nextStep='5'/>		
 			case '5':
-				return <Step5Form moveNextStep={this.moveNextStep} nextStep='6'/>		
+				return <Step5Form moveNextStep={this.moveNextStep} customerData={this.state.customerData} nextStep='6'/>		
 		}
 	}
 

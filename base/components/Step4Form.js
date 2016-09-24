@@ -26,6 +26,13 @@ export default class Step4Form extends React.Component {
         <div style={ {paddingBottom:'14px'}}>
           <label>Address1</label>
           <div>
+            <input name="flatNo" disabled value={customerData.flatNo} type="text" placeholder="flatNo"/>
+          </div>
+        </div>
+
+        <div style={ {paddingBottom:'14px'}}>
+          <label>Address1</label>
+          <div>
             <input name="address1" disabled value={customerData.address1} type="text" placeholder="address1"/>
           </div>
         </div>

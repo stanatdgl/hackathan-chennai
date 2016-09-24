@@ -10,43 +10,43 @@ export default class Step5Form extends React.Component {
   }
 
   moveNext (){
-    moveNextStep(nextStep);
+    
   }
 
   render(){
 
-    const { handleSubmit, pristine, nextStep,moveNextStep } = this.props
+    const { handleSubmit, pristine, nextStep, customerData, moveNextStep } = this.props
 
     return (
       <form onSubmit={handleSubmit}>
-      <div>
+      <div style={ { paddingBottom:'16px'}}>
         <label>Welcome to RBS</label>   
       </div>
 
-      <div>
+      <div style={ { paddingBottom:'16px'}}>
         <label>Your details are below</label>
-        <div>
+        <div style={ {paddingBottom:'14px'}}>
           <label>Your Account number</label>
           <div>
-            23424323
+            {customerData.accounNo}
           </div>
         </div>
-        <div>
+        <div style={ {paddingBottom:'14px'}}>
           <label>Customer ID number</label>
           <div>
-            43535345
+            {customerData.customerId}
           </div>
         </div>
-        <div>
+        <div style={ {paddingBottom:'14px'}}>
           <label>Sort Code</label>
           <div>
-            23-22-22
+            {customerData.sortcode}
           </div>
         </div>        
       </div>
       
-      <div>
-        <button type="button" onClick={this.moveNext} >Next</button>
+      <div style={ { paddingBottom:'14px'}}>
+        <button type="button" onClick={this.moveNext} >Done</button>
       </div>
     </form>
     )

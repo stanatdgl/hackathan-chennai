@@ -1,10 +1,9 @@
 {
-  "firstname": "Helen",
-  "middlename": "Mick",
-  "lastname": "Luce",
+  "firstname": "Karthick",
+  "middlename": "A",
+  "lastname": "Anbalagan",
   "dob": "21.08.1990",
-  "gender": "Female",
-  "postcode": "BAC SDS2",
+  "gender": "Male",
   "nationality": "UK",
   "custype": "high",
   "qual": "graduate",
@@ -14,6 +13,12 @@
   "secgrade": "sec2",
   "incrange": "medium",
   "marital_status": "Married",
+  "flatNo" : "24",
   "address1" : "address1",
-  "address2" : "address2"
+  "address2" : "address2",
+  "address3" : "address3",  
+  "postcode": "BAC SDS2",
+  "accounNo": "23764579" ,
+  "customerId": "179153567",
+  "sortcode": "23-33-72"
 }
