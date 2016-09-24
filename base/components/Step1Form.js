@@ -3,12 +3,24 @@ import React from 'react'
 export default class Step1Form extends React.Component {
 
   constructor(props){
-    super(props);
+    super(props)
+    this.state = {
+        firstname : this.props.customerData.firstname,
+        middlename : this.props.customerData.middlename,
+        lastname : this.props.customerData.lastname
+      }
     this.moveNext = this.moveNext.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   moveNext (){
     this.props.moveNextStep(this.props.nextStep);
+  }
+
+  onChange(event){
+    let sourceName =  event.source.name;
+    console.log('sourceName ::' + event.source.value);
+    this.setState({ sourceName : event.source.value})
   }
 
   render(){
@@ -25,19 +37,19 @@ export default class Step1Form extends React.Component {
         <div style={ {paddingBottom:'14px'}}>
           <label>First Name</label>
           <div>
-            <input name="firstName" type="text" value={customerData.firstname} placeholder="First Name"/>
+            <input name="firstname" type="text" onChange={this.onChange} value={this.state.firstname} placeholder="First Name"/>
           </div>
         </div>
         <div style={ {paddingBottom:'14px'}}>
           <label>Middle Name</label>
           <div>
-            <input name="middlename" type="text" value={customerData.middlename} placeholder="middlename"/>
+            <input name="middlename" type="text" onChange={this.onChange} value={this.state.middlename} placeholder="Middle Name"/>
           </div>
         </div>
         <div style={ {paddingBottom:'14px'}}>
           <label>Last Name</label>
           <div>
-            <input name="lastName" type="text" value={customerData.lastname} placeholder="Last Name"/>
+            <input name="lastname" type="text" onChange={this.onChange} value={this.state.lastname} placeholder="Last Name"/>
           </div>
         </div>
         <div style={ {paddingBottom:'14px'}}>
