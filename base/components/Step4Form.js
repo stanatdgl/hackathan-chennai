@@ -20,7 +20,7 @@ export default class Step4Form extends React.Component {
     return (
      <form onSubmit={handleSubmit}>
         <div style={ { paddingBottom:'16px'}}>
-          <label>Your Address here</label>
+          <h1>Your Address here</h1>
         </div>
 
         <div style={ {paddingBottom:'14px'}}>

@@ -20,7 +20,7 @@ export default class Step5Form extends React.Component {
     return (
       <form onSubmit={handleSubmit}>
       <div style={ { paddingBottom:'16px'}}>
-        <label>Welcome to RBS</label>   
+      <h5> <i> Hi Karthick, Welcome to RBS </i>  </h5>
       </div>
 
       <div style={ { paddingBottom:'16px'}}>
@@ -28,19 +28,25 @@ export default class Step5Form extends React.Component {
         <div style={ {paddingBottom:'14px'}}>
           <label>Your Account number</label>
           <div>
-            {customerData.accounNo}
+            <b>
+              {customerData.accounNo}
+              </b>
           </div>
         </div>
         <div style={ {paddingBottom:'14px'}}>
           <label>Customer ID number</label>
           <div>
+          <b>
             {customerData.customerId}
+            </b>
           </div>
         </div>
         <div style={ {paddingBottom:'14px'}}>
           <label>Sort Code</label>
           <div>
+            <b>
             {customerData.sortcode}
+            </b>
           </div>
         </div>        
       </div>
