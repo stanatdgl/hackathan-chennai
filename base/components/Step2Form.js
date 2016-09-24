@@ -26,22 +26,23 @@ export default class Step2Form extends React.Component {
 
     return (
         <form onSubmit={handleSubmit}>
-          <div>
+          <div style={ { paddingBottom:'16px'}}>
             <label>Let's capture your ID</label>        
           </div>
-          <div>
-              <Webcam ref="webcam" width='500' height='300' />
-          </div>
-          <div>
-              <button type="button" onClick={this.capture} >Capture</button>
-          </div>
-
-          <div>
           { 
-            this.state.capturedImage?
-              <ReactCrop ref='reactCropImg' width='500' height='300' src={this.state.capturedImage} /> : null 
+            this.state.capturedImage ?
+            <div id="croppingArea" style={ { paddingBottom:'14px'}}>
+              <ReactCrop ref='reactCropImg' width='475' height='300' src={this.state.capturedImage} /> 
+            </div> 
+            :
+            <div id="webcamArea">
+              <div id="webcam">
+                <Webcam ref="webcam" width='475' height='300' />
+              </div>
+
+              <button align="right" type="button" onClick={this.capture} >Capture</button>
+            </div>            
           }          
-          </div>
             
           <div>
             <button type="button" onClick={this.moveNext} >Next</button>            
