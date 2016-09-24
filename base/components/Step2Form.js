@@ -32,7 +32,7 @@ export default class Step2Form extends React.Component {
           { 
             this.state.capturedImage ?
             <div id="croppingArea" style={ { paddingBottom:'14px'}}>
-              <ReactCrop ref='reactCropImg' width='475' height='300' src={this.state.capturedImage} /> 
+              <ReactCrop ref='reactCropImg' disabled width='475' height='300' src={this.state.capturedImage} /> 
             </div> 
             :
             <div id="webcamArea">
