@@ -1,0 +1,19 @@
+{
+  "firstname": "Helen",
+  "middlename": "Mick",
+  "lastname": "Luce",
+  "dob": "21.08.1990",
+  "gender": "Female",
+  "postcode": "BAC SDS2",
+  "nationality": "UK",
+  "custype": "high",
+  "qual": "graduate",
+  "profession": "Private",
+  "phone": "+919884918332",
+  "email": "karthick@yahoo.co.in",
+  "secgrade": "sec2",
+  "incrange": "medium",
+  "marital_status": "Married",
+  "address1" : "address1",
+  "address2" : "address2"
+}

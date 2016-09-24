@@ -1,21 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import TodoApp from './base/components/TodoApp';
-import { todos, addTodoAction } from './base/reducers/TodoReducer';
+import { Router, Route, Link, browserHistory ,hashHistory } from 'react-router';
+import { Provider, connect } from 'react-redux';
+import AppContainer from './base/components/AppContainer';
+import { reducer as reduxFormReducer } from 'redux-form';
 import { createStore, combineReducers } from 'redux';
 
 
 const todoApp = combineReducers({
-    todos:todos
+    form: reduxFormReducer
 });
 
 
-const todoAppStore = createStore(todoApp);
+const store = createStore(todoApp);
 
 ReactDOM.render( 
-    <Provider store={todoAppStore}>
-      <TodoApp todos={todoAppStore.getState().todos} /> 
+    <Provider store={store}>
+      <Router history={browserHistory}>
+        <Route path="/" component={AppContainer} />
+      </Router>
     </Provider> , 
-    document.getElementById('app')
+    document.getElementById('hackApp')
 );
