@@ -4,14 +4,13 @@ import { Field, reduxForm } from 'redux-form';
 
 const Step0Form = (props) => {
 
-  const { handleSubmit, pristine, nextStep,previousStep, moveNextStep,  reset, submitting } = props
+  const { handleSubmit, pristine, nextStep,previousStep, moveNextStep, storeData,  reset, submitting } = props
   // let url = "/sample.json";
   let url = "/sample.json";
   const moveNext = () =>{
-    console.log("inside check");
     axios.get(url).then(function(response){
-    		console.log(response);
-        moveNextStep(nextStep);
+    		console.log(response.data);
+        moveNextStep(nextStep, response);
     });    
   }
 

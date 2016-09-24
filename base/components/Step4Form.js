@@ -1,5 +1,4 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form';
 import Webcam from "react-user-media";
 import ReactCrop from 'react-image-crop';
 
@@ -16,39 +15,40 @@ export default class Step4Form extends React.Component {
 
   render(){
 
-    const { handleSubmit, nextStep,moveNextStep } = this.props
+    const { handleSubmit, nextStep, customerData, moveNextStep } = this.props
 
     return (
      <form onSubmit={handleSubmit}>
-        <div>
+        <div style={ { paddingBottom:'16px'}}>
           <label>Your Address here</label>
         </div>
 
-        <div>
-          <label>First Name</label>
+        <div style={ {paddingBottom:'14px'}}>
+          <label>Address1</label>
           <div>
-            <input name="firstName" component="input" type="text" placeholder="First Name"/>
+            <input name="address1" disabled value={customerData.address1} type="text" placeholder="address1"/>
           </div>
         </div>
-        <div>
-          <label>Last Name</label>
+        <div style={ {paddingBottom:'14px'}}>
+          <label>Address2</label>
           <div>
-            <input name="lastName" component="input" type="text" placeholder="Last Name"/>
+            <input name="address2" disabled value={customerData.address2} type="text" placeholder="address2"/>
           </div>
         </div>
-        <div>
-          <label>Email</label>
+        <div style={ {paddingBottom:'14px'}}>
+          <label>Address3</label>
           <div>
-            <input name="email" component="input" type="email" placeholder="Email"/>
+            <input name="address3" disabled value={customerData.address3} type="text" placeholder="address3"/>
           </div>
         </div>
-        <div>
-          <label>Sex</label>
+
+        <div style={ {paddingBottom:'14px'}}>
+          <label>Postal Code </label>
           <div>
-            <label><input name="sex" component="input" type="radio" value="male"/> Male</label>
-            <label><input name="sex" component="input" type="radio" value="female"/> Female</label>
+            <input name="postcode" disabled value={customerData.postcode} type="postcode" placeholder="postcode"/>
           </div>
-        </div>                
+        </div>
+        
         <div>
           <button type="button" onClick={this.moveNext} >Next</button>
         </div>

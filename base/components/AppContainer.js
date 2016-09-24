@@ -10,27 +10,31 @@ export default class AppContainer  extends React.Component {
 	
 	constructor(props){		
 		super(props);
-  		this.state = { currentStep: '0' };
+  		this.state = { currentStep: '0', customerData: null  };  		
 		this.moveNextStep = this.moveNextStep.bind(this);
 	}
 
-	moveNextStep(nextStep){
-		this.setState({currentStep: nextStep});
+	moveNextStep(nextStep, jsonData){
+		if(jsonData){
+			console.log("jsonData :: " +  jsonData.data);
+			this.setState({currentStep: nextStep, customerData: jsonData.data});
+		}else{
+			this.setState({currentStep: nextStep});	
+		}			
+			
 	}
 
 	getChildView(nextStep){
-		
-		console.log('nextStep ::' + nextStep)
-
+	
 		switch (nextStep) {	
 			case '0': 
-				return <Step0Form moveNextStep={this.moveNextStep} nextStep='2'/>	
+				return <Step0Form moveNextStep={this.moveNextStep} nextStep='1'/>	
 			case '1': 
-				return <Step1Form moveNextStep={this.moveNextStep} nextStep='2'/>
+				return <Step1Form moveNextStep={this.moveNextStep} customerData={this.state.customerData} nextStep='2'/>
 			case '2':
 				return <Step2Form moveNextStep={this.moveNextStep} nextStep='3'/>
 			case '3':
-				return <Step3Form moveNextStep={this.moveNextStep} nextStep='4'/>
+				return <Step3Form moveNextStep={this.moveNextStep} customerData={this.state.customerData} nextStep='4'/>
 			case '4':
 				return <Step4Form moveNextStep={this.moveNextStep} nextStep='5'/>		
 			case '5':
