@@ -29,7 +29,7 @@ export default class Step3Form extends React.Component {
     return (
         <form onSubmit={handleSubmit}>
           <div style={ { paddingBottom:'16px'}}>
-            <label>Let's take a selfie</label>        
+            <h1>Let's take a selfie</h1>
           </div>
           { 
             this.state.capturedImage ?

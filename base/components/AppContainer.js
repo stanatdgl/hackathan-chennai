@@ -53,7 +53,8 @@ export default class AppContainer  extends React.Component {
 
 		return (
 
-				<div id='childElement' style={ {width: "470px", padding:'14px', 'marginTop':'-38px', 'marginLeft':'258px', 'position':'relative', border: "2px solid"} }>				
+				<div id='childElement' style={ {width: "470px", padding:'14px', 'marginTop':'-38px', 'marginLeft':'258px', 
+						'position':'relative', border: "0px solid", background: "url('RBS1.png')" } }>				
 					{child}
 				</div>
 			);

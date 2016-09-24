@@ -27,7 +27,7 @@ export default class Step2Form extends React.Component {
     return (
         <form onSubmit={handleSubmit}>
           <div style={ { paddingBottom:'16px'}}>
-            <label>Let's capture your ID</label>        
+            <h1>Let's capture your ID</h1>        
           </div>
           { 
             this.state.capturedImage ?

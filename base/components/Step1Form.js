@@ -31,7 +31,7 @@ export default class Step1Form extends React.Component {
      return (
       <form onSubmit={handleSubmit}>
         <div style={ { paddingBottom:'16px'}}>
-            <label>Is this you?</label>
+            <h1>Is this you?</h1>
         </div>
 
         <div style={ {paddingBottom:'14px'}}>
